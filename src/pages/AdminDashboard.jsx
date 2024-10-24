@@ -2,13 +2,18 @@ import { useState, useEffect } from "react";
 import "../styles/adminDashboard.css";
 import axios from "axios";
 import Bus from "../components/Bus";
+import DeleteBusModal from "../components/DeleteBusModal";
+import AddBusModal from "../components/AddBusModal";
+import EditBusModal from "../components/EditBusModal";
 const AdminDashboard = () => {
   // State for modals
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [selectedBus, setSelectedBus] = useState(null);
+  const [selectedBusId, setSelectedBusId] = useState(null);
+  const [selectedBus,setSelectedBus] = useState();
   const [buses, setBuses] = useState();
+
 
   const token = sessionStorage.getItem("token");
   // Function to handle API calls for add, edit, and delete
@@ -22,7 +27,7 @@ const AdminDashboard = () => {
     axios
       .get("http://localhost:5000/api/buses", headers)
       .then((response) => {
-        console.log(response);
+        console.log(response.data[0]);
         setBuses(response.data);
       })
       .catch((error) => {
@@ -36,23 +41,17 @@ const AdminDashboard = () => {
   }, []);
 
 
-  const handleEditBus = (id) => {
-    setSelectedBus(bus); // Set the bus to be edited
+
+  const handleEditBus = () => {
+  
     setShowEditModal(true); // Open the edit modal
   };
 
-  const handleUpdateBus = (updatedBus) => {
-    setBuses((prev) =>
-      prev.map((bus) => (bus.id === updatedBus.id ? updatedBus : bus))
-    ); // Update the bus list with the edited bus
-  };
-  const handleDeletBus = (id) =>{
+
+  const handleDeleteBus = () =>{
     setShowDeleteModal(true);
   }
 
-  const handleAddBus = (newBus) => {
-    setBuses((prev) => [...prev, newBus]); // Add the new bus to the list
-  };
 
   return (
     <>
@@ -92,12 +91,16 @@ const AdminDashboard = () => {
             <tbody>
               {buses?.map((bus) => (
                 <Bus
-                  key={bus.id}
+                  key={bus._id}
                   bus={bus}
+                  id={bus._id}
                   onEdit={handleEditBus}
                   onDelete={handleDeleteBus}
+                  onSelect={setSelectedBusId}
+                  onSelectBus={setSelectedBus}
                 />
               ))}
+              
               {/* {buses?.map((bus, index) => (
                 <tr key={index}>
                   <td>{bus.name}</td>
@@ -148,107 +151,17 @@ const AdminDashboard = () => {
 
       {/* Add Modal */}
       {showAddModal && (
-        <div className="modal show" id="addBusModal">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h4 className="modal-title">Add Bus</h4>
-                <button
-                  type="button"
-                  className="close"
-                  onClick={() => setShowAddModal(false)}
-                >
-                  &times;
-                </button>
-              </div>
-              <div className="modal-body">
-                {/* Form Inputs for Adding Bus */}
-              </div>
-              <div className="modal-footer">
-                <button
-                  className="btn btn-default"
-                  onClick={() => setShowAddModal(false)}
-                >
-                  Cancel
-                </button>
-                <button className="btn btn-success" onClick={handleAddBus}>
-                  Add
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <AddBusModal setShowAddModal={setShowAddModal} />
       )}
 
       {/* Edit Modal */}
-      {showEditModal && selectedBus && (
-        <div className="modal show" id="editBusModal">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h4 className="modal-title">Edit Bus</h4>
-                <button
-                  type="button"
-                  className="close"
-                  onClick={() => setShowEditModal(false)}
-                >
-                  &times;
-                </button>
-              </div>
-              <div className="modal-body">
-                {/* Form Inputs for Editing Bus */}
-              </div>
-              <div className="modal-footer">
-                <button
-                  className="btn btn-default"
-                  onClick={() => setShowEditModal(false)}
-                >
-                  Cancel
-                </button>
-                <button className="btn btn-info" onClick={handleEditBus}>
-                  Save
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+      {showEditModal && (
+        <EditBusModal setShowEditModal={setShowEditModal} bus={selectedBus} />
       )}
 
       {/* Delete Modal */}
       {showDeleteModal && (
-        <div className="modal show" id="deleteBusModal">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h4 className="modal-title">Delete Bus</h4>
-                <button
-                  type="button"
-                  className="close"
-                  onClick={() => setShowDeleteModal(false)}
-                >
-                  &times;
-                </button>
-              </div>
-              <div className="modal-body">
-                <p>Are you sure you want to delete this bus?</p>
-                <p className="text-warning">
-                  <small>This action cannot be undone.</small>
-                </p>
-              </div>
-              <div className="modal-footer">
-                <button
-                  className="btn btn-default"
-                  onClick={() => setShowDeleteModal(false)}
-                >
-                  Cancel
-                </button>
-                <button className="btn btn-danger" onClick={handleDeleteBus}>
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <DeleteBusModal setShowDeleteModal={setShowDeleteModal} id={selectedBusId}/>
       )}
     </>
   );

@@ -1,9 +1,16 @@
-
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import BusForm from "./BusForm";
 
-const AddBusModal = ({ isOpen, onClose, onAdd }) => {
+const AddBusModal = ({ setShowAddModal }) => {
+  const token = sessionStorage.getItem("token");
+
+  const headers = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   const [formData, setFormData] = useState({
     name: "",
     totalSeats: 0,
@@ -16,26 +23,52 @@ const AddBusModal = ({ isOpen, onClose, onAdd }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("/api/buses", formData)
-      .then((response) => {
-        window.alert("Bus added successfully!");
-        onAdd(response.data); // Call the onAdd function to refresh the bus list
-        onClose(); // Close the modal
-      })
-      .catch((error) => {
-        window.alert(`Error adding bus: ${error.message}`);
-      });
+    try {
+      console.log(formData);
+      const response = axios.post(
+        "http://localhost:5000/api/buses",
+        formData,
+        headers
+      );
+      console.log(response);
+      window.alert('Bus added successfully')
+    } catch (error) {
+      window.alert(`Error adding bus: ${error.message}`);
+    } finally {
+      setShowAddModal(false);
+    }
   };
 
-  if (!isOpen) return null; // Don't render anything if the modal is closed
-
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <h2>Add Bus</h2>
-        <BusForm formData={formData} setFormData={setFormData} onSubmit={handleSubmit} />
-        <button onClick={onClose}>Cancel</button>
+    <div className="modal" id="addBusModal">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h4 className="modal-title">Add Bus</h4>
+            <button
+              type="button"
+              className="close"
+              onClick={() => setShowAddModal(false)}
+            >
+              &times;
+            </button>
+          </div>
+          <div className="modal-body">
+            <BusForm
+              formData={formData}
+              setFormData={setFormData}
+              onSubmit={handleSubmit}
+            />
+          </div>
+          <div className="modal-footer">
+            <button
+              className="btn btn-default"
+              onClick={() => setShowAddModal(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

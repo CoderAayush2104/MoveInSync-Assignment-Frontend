@@ -1,5 +1,5 @@
 
-const Bus = ({ bus, onEdit,onDelete }) => {
+const Bus = ({ bus, onEdit,onDelete,onSelect,id ,onSelectBus}) => {
   return (
     <tr>
       <td>{bus.name}</td>
@@ -8,10 +8,21 @@ const Bus = ({ bus, onEdit,onDelete }) => {
       <td>{bus.availableDays.join(", ")}</td>
       <td>{bus.estimatedTimeofArrival}</td>
       <td>{bus.estimatedTimeofDeparture}</td>
-      <td>{bus.routes.join(", ")}</td>
-      <td>
-        <button onClick={() => onEdit(bus)}>Edit</button>
-        <button onClick={() => onDelete(bus)}>Delete</button>
+      <td>{/* Display routes as "source -> destination" */}
+        {bus.routes?.map((route) => (
+          <div key={route._id}>
+            {route.origin} → {route.destination}
+          </div>
+        ))}</td>
+      <td className="table-action-buttons">
+        <button onClick={() => {
+            onSelectBus(bus)
+           
+            onEdit(bus)
+            }}>Edit</button>
+        <button onClick={() => {
+            onSelect(id)
+            onDelete(id)}}>Delete</button>
       </td>
     </tr>
   );

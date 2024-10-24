@@ -14,7 +14,7 @@ const withAuth = (WrappedComponent, allowedRole = "") => {
 
     if (!token) {
       // If there's no token, redirect to login
-      return <Navigate to="/login"/>
+      return <Navigate to="/"/>
     }
 
     // Decode the JWT to get user info (including roles)
@@ -26,11 +26,11 @@ const withAuth = (WrappedComponent, allowedRole = "") => {
       const tokenAgeInSeconds = currentTime - issuedAt;
       if (tokenAgeInSeconds > 24 * 60 * 60) { // 24 hours in seconds
         console.log("Token is too old");
-        return <Navigate to="/login"/>
+        return <Navigate to="/"/>
       }
     } catch (error) {
       console.error("Invalid token", error);
-      return <Navigate to="/login"/>
+      return <Navigate to="/"/>
     }
 
    

@@ -34,8 +34,6 @@ const WelcomePage = () => {
 
       // Handle successful login
       console.log("Login successful", response.data);
-      window.alert("Login successful!");
-
       // Store token, name, and role in sessionStorage
       sessionStorage.setItem("token", response.data.token);
       sessionStorage.setItem("name", response.data.user.name);
