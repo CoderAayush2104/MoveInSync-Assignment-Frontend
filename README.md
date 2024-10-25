@@ -30,4 +30,23 @@ Run the project locally
 ```
 
 
+## Demo
+
+Deployed Project Link :
+https://moving-sync-assignment-frontend.vercel.app/
+
+Admin Details 
+
+    Email : aayush.2104@gmail.com
+
+    Password : Aayush
+
+User Details 
+
+    Email : 202151106@iiitvadodara.ac.in
+
+    Password : Hackbeast
+
+You can create new users if you want.
+
 
