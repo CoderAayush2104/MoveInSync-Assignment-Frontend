@@ -38,7 +38,7 @@ const BookingForm = ({ busId, onBookingSuccess }) => {
 
     try {
       await axios.post(
-        'http://localhost:5000/api/bookings',
+        'https://movingsync-assignment-backend.onrender.com/api/bookings',
         { userId, busId, seatNumber, date },
         headers
       );

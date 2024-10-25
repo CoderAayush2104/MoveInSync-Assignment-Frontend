@@ -23,7 +23,7 @@ const UserBookings = () => {
   const fetchBookings = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/bookings/${userId}`,
+        `https://movingsync-assignment-backend.onrender.com/api/bookings/${userId}`,
         headers
       );
       setTickets(response.data);
@@ -42,7 +42,7 @@ const UserBookings = () => {
     setCancelingId(ticketId);
     try {
       await axios.delete(
-        `http://localhost:5000/api/bookings/${ticketId}`,
+        `https://movingsync-assignment-backend.onrender.com/api/bookings/${ticketId}`,
         headers
       );
       setTickets(tickets.filter(ticket => ticket.ticketId !== ticketId));

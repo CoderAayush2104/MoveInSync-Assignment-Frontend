@@ -18,7 +18,7 @@ const BusList = ({ source, destination, onSelectBus }) => {
 
     const fetchBuses = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/buses/available?source=${source}&destination=${destination}`, headers);
+        const response = await axios.get(`https://movingsync-assignment-backend.onrender.com/api/buses/available?source=${source}&destination=${destination}`, headers);
         setBuses(response.data);
         setError(null)
       } catch (err) {

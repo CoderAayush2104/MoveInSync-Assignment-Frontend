@@ -24,7 +24,7 @@ const UserPage = () => {
   useEffect(() => {
     const fetchRoutes = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/buses/routes', headers);
+        const response = await axios.get('https://movingsync-assignment-backend.onrender.com/api/buses/routes', headers);
         setRoutes(response.data);
         
         const uniqueSources = new Set(response.data.map(route => route.origin));

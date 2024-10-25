@@ -19,7 +19,7 @@ const BusForm = ({ formData, setFormData, onSubmit }) => {
         // Fetch all routes
         const fetchRoutes = async () => {
           try {
-            const response = await axios.get('http://localhost:5000/api/buses/routes',headers);
+            const response = await axios.get('https://movingsync-assignment-backend.onrender.com/api/buses/routes',headers);
             setRoutes(response.data);
            console.log(response)
           } catch (error) {
@@ -38,7 +38,7 @@ const BusForm = ({ formData, setFormData, onSubmit }) => {
         // Fetch the selected route details
         try {
             console.log(routeId)
-          const response = await axios.get(`http://localhost:5000/api/buses/routes/${routeId}`,headers);
+          const response = await axios.get(`https://movingsync-assignment-backend.onrender.com/api/buses/routes/${routeId}`,headers);
           console.log("Route Details",response)
           setRouteDetails(response.data);
           

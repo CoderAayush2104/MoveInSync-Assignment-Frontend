@@ -25,7 +25,7 @@ const AdminDashboard = () => {
   };
   const fetchBuses = () => {
     axios
-      .get("http://localhost:5000/api/buses", headers)
+      .get("https://movingsync-assignment-backend.onrender.com/api/buses", headers)
       .then((response) => {
         console.log(response.data[0]);
         setBuses(response.data);

@@ -27,7 +27,7 @@ const WelcomePage = () => {
     setLoadingLogin(true);
 
     try {
-      const response = await axios.post("http://localhost:5000/api/users/login", {
+      const response = await axios.post("https://movingsync-assignment-backend.onrender.com/api/users/login", {
         email: loginEmail,
         password: loginPassword,
       });
@@ -63,7 +63,7 @@ const WelcomePage = () => {
     setLoadingRegister(true);
 
     try {
-      const response = await axios.post("http://localhost:5000/api/users/register", {
+      const response = await axios.post("https://movingsync-assignment-backend.onrender.com/api/users/register", {
         name: registerName,
         email: registerEmail,
         password: registerPassword,

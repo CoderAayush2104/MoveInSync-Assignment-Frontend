@@ -26,7 +26,7 @@ const AddBusModal = ({ setShowAddModal }) => {
     try {
       console.log(formData);
       const response = axios.post(
-        "http://localhost:5000/api/buses",
+        "https://movingsync-assignment-backend.onrender.com/api/buses",
         formData,
         headers
       );

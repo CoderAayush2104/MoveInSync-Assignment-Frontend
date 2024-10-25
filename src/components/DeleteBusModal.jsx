@@ -12,7 +12,7 @@ const DeleteBusModal = ({setShowDeleteModal,id}) => {
         };
         console.log(busId)
         try {
-            const response = axios.delete(`http://localhost:5000/api/buses/${busId}`,headers);
+            const response = axios.delete(`https://movingsync-assignment-backend.onrender.com/api/buses/${busId}`,headers);
             if(response){
 
                 window.alert('Bus deleted successfully')

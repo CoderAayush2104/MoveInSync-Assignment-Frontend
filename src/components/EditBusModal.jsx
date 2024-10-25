@@ -33,7 +33,7 @@ const EditBusModal = ({ setShowEditModal, bus }) => {
     try {
       console.log(formData);
       const response = axios.put(
-        `http://localhost:5000/api/buses/${bus._id}`,
+        `https://movingsync-assignment-backend.onrender.com/api/buses/${bus._id}`,
         formData,
         headers
       );
