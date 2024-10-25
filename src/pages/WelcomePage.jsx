@@ -38,12 +38,15 @@ const WelcomePage = () => {
       sessionStorage.setItem("token", response.data.token);
       sessionStorage.setItem("name", response.data.user.name);
       sessionStorage.setItem("role", response.data.user.role);
+      sessionStorage.setItem("id",response.data.user._id)
         // Clear login input fields
         setLoginEmail("");
         setLoginPassword("");
 
       if(response.data.user.role === "admin"){
         navigate("/admin")
+      }else{
+        navigate("/user")
       }
   
     } catch (error) {

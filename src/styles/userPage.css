@@ -1,0 +1,116 @@
+/* UserPage.css */
+
+.user-page{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    
+  }
+  
+  .user-page>h1 {
+    text-align: center;
+    color: skyblue;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .source-field,
+  .destination-field {
+    margin-bottom: 1.5rem;
+  }
+  
+  .source-field-label,
+  .destination-field-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: skyblue;
+  }
+  
+  .user-page select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+    transition: border-color 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+  }
+  
+  .user-page>select:focus {
+    outline: none;
+    border-color: #3498db;
+  }
+  
+  .search-buses-button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 2rem;
+  }
+  
+  .search-buses-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .search-buses-button:active {
+    transform: translateY(1px);
+  }
+  
+  /* Style for the "My Bookings" button */
+  .app > button:first-of-type {
+    background-color: #2ecc71;
+    margin-bottom: 2rem;
+  }
+  
+  .app > button:first-of-type:hover {
+    background-color: #27ae60;
+  }
+  
+  /* Responsive Design */
+  @media (min-width: 768px) {
+    .app {
+      padding: 3rem;
+    }
+  
+    .source-field,
+    .destination-field {
+      display: inline-block;
+      width: calc(50% - 1rem);
+    }
+  
+    .source-field {
+      margin-right: 2rem;
+    }
+  
+    .search-buses-button {
+      width: auto;
+      min-width: 200px;
+      margin: 2rem auto;
+    }
+  }
+  
+  /* Add some spacing between the form and list/booking components */
+  .bus-list,
+  .booking-form {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }

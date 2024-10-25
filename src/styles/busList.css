@@ -1,0 +1,108 @@
+
+
+.bus-list-container h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .bus-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .bus-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #eee;
+  }
+  
+  .bus-card h3 {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .bus-card p {
+    color: #666;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+  
+  .occupancy-container {
+    position: relative;
+    height: 30px;
+    background: #f5f5f5;
+    border-radius: 15px;
+    margin: 1rem 0;
+    overflow: hidden;
+  }
+  
+  .occupancy-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    border-radius: 15px;
+  }
+  
+  .occupancy-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  /* Color variations based on occupancy */
+  .low {
+    background-color: #2ecc71;
+  }
+  
+  .medium {
+    background-color: #f1c40f;
+  }
+  
+  .high {
+    background-color: #e74c3c;
+  }
+  
+  .bus-card button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  .bus-card button:hover {
+    background-color: #2980b9;
+  }
+  
+  .bus-card button:active {
+    transform: translateY(1px);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .bus-cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }

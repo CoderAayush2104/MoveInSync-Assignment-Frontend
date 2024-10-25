@@ -43,7 +43,6 @@ const AdminDashboard = () => {
 
 
   const handleEditBus = () => {
-  
     setShowEditModal(true); // Open the edit modal
   };
 
@@ -69,7 +68,7 @@ const AdminDashboard = () => {
                   onClick={() => setShowAddModal(true)}
                   className="btn btn-success"
                 >
-                  <i className="material-icons">&#xE147;</i>{" "}
+                  <i className="material-icons">+</i>{" "}
                   <span>Add New Bus</span>
                 </button>
               </div>

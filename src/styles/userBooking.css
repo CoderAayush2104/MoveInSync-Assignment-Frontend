@@ -1,0 +1,126 @@
+/* UserBookings.css */
+
+.bookings-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+  
+  .bookings-header {
+    text-align: center;
+    color: skyblue;
+    margin-bottom: 2rem;
+  }
+  
+  .bookings-header h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .no-bookings {
+    text-align: center;
+    padding: 3rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    color: #6c757d;
+    font-size: 1.1rem;
+  }
+  
+  .bookings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .booking-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .booking-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .booking-info {
+    margin-bottom: 1.5rem;
+  }
+  
+  .booking-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .booking-detail:last-child {
+    border-bottom: none;
+  }
+  
+  .detail-label {
+    color: #666;
+    font-weight: 500;
+  }
+  
+  .detail-value {
+    color: #2c3e50;
+    font-weight: 600;
+  }
+  
+  .cancel-button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cancel-button:hover {
+    background-color: #c0392b;
+  }
+  
+  .cancel-button:active {
+    transform: scale(0.98);
+  }
+  
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+  }
+  
+  .loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .bookings-container {
+      margin: 1rem;
+      padding: 1rem;
+    }
+    
+    .bookings-grid {
+      grid-template-columns: 1fr;
+    }
+  }
